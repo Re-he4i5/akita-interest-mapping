@@ -1,7 +1,28 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @user,url: user_registration_path,method: :post do |f| %>
   <%= render "publics/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.text_field :last_name,placeholder: "姓",class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <td><%= f.text_field :first_name,placeholder: "名",class: "form-control" %></td>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :last_name_kana,placeholder: "セイ",class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :user_name,placeholder: "Tabi人名（ユーザー名）",class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :first_name_kana,placeholder: "メイ",class: "form-control" %>
+  </div>
+
 
   <div class="field">
     <%= f.label :email %><br />
