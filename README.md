@@ -15,3 +15,6 @@
   - 検索
   - ブックマーク
   - コメント
+
+参考
+https://ckan.pref.akita.lg.jp/dataset/050008_sicyouson_008/resource/5699b425-4de9-435f-a2c3-36d9cd0aa895
