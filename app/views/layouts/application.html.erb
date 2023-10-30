@@ -7,14 +7,12 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <script>
-      var FONTAWESOME_KEY = '<%= ENV['FONTAWESOME_KEY'] %>';
-    </script>
-    <script src="https://path-to-fontawesome?apikey=" + FONTAWESOME_KEY crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2dff7017b4.js" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <%= yield %>
   </body>
 </html>
