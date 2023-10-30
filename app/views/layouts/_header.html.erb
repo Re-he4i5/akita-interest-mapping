@@ -9,14 +9,40 @@
       <div class="justify-content-end align-items-center">
         <% if user_signed_in? %>
           <%= link_to destroy_user_session_path,method: :delete do %>
-            Logout
+            <i class="fas fa-sign-out-alt mx-2" ></i>Logout
           <% end %>
+          <%= link_to root_path do %>
+            <i class="fas fa-home mx-2" ></i>Home
+          <% end %>
+          <%= link_to user_path(current_user.id) do %>
+            <i class="fas fa-user mx-2" ></i>MyPage
+          <% end %>
+          <%= link_to new_post_path do %>
+            <i class="fas fa-edit mx-2" ></i>NewPost
+          <% end %>
+
         <% elsif admin_signed_in? %>
-            Home
+          <%= link_to destroy_admin_session_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt mx-2" ></i>Logout
+          <% end %>
+          <%= link_to admins_root_path do %>
+            <i class="fas fa-home mx-2" ></i>Home
+          <% end %>
+          <%= link_to admins_users_path do %>
+            <i class="fas fa-users mx-2" ></i>Users
+          <% end %>
+
         <% else %>
           <%= link_to user_session_path do %>
-            Login
+            <i class="fas fa-sign-in-alt mx-2"></i>Login
           <% end %>
+          <%= link_to root_path do %>
+            <i class="fas fa-home mx-2"></i>Home
+          <% end %>
+          <%= link_to user_session_path do %>
+            <i class="fas fa-user mx-2"></i>Mypage
+          <% end %>
+
         <% end %>
       </div>
     </div>
