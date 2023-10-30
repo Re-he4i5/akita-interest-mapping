@@ -1,0 +1,74 @@
+<div class="container-fluid">
+  <div class="row d-flex justify-content-center">
+    <div class="col-10 col-sm-8 col-md-5">
+      <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>  
+    </div>
+  </div>
+  <div class="row mt-5 mb-4 d-flex justify-content-center">
+    <h2>ー　投稿編集　ー</h2>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-8 col-md-5 col-lg-4 col-xl-3">
+      <%= form_with model: @post,url: post_path(@post.id),method: :patch do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <td>画像<br><%= f.file_field :image,accept: "image/*",class: "form-control-file" %></td>
+        </tr>
+        <tr>
+          <td>
+            市町村名<br>
+            <%= f.text_field :town_name, list: "list-name",class: "form-control",placeholder: @town.name %>
+            <datalist id="list-name">
+              <% @towns.each do |town| %>
+                <option value=<%= town.name %>>
+              <% end %>
+            </datalist>
+          </td>
+        </tr>
+        <tr>
+          <td>カテゴリ<br><%= f.collection_select(:category_id,@categories,:id,:name,{prompt: "--カテゴリを選択してください--"},class: "form-control") %></td>
+        </tr>
+        <tr>
+          <td>タイトル<br><%= f.text_field :title,class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td>思い出<br><%= f.text_area :body,class: "form-control" %></td>
+        </tr>
+      </table>
+      <div class="row mb-4 d-flex justify-content-center">
+        <%= f.submit "変更を保存",class: "btn btn-success text-white" %>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-6 col-lg-5 col-xl-4">
+      <div class="card h-100">
+        <%= image_tag @post.image,class: "img-fluid" %>
+        <div class="card-body px-3 pb-3 pt-0">
+            <div class="row mb-2">
+                <div class="col-5">
+                </div>
+                <div class="col-7 text-right">
+                    <%= link_to user_path(@post.user.id) do %>
+                        ＠<%= @post.user.nickname %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-6 pr-0">
+                    <span class="card-title h4 font-weight-bold"><%= @post.title %></span>    
+                </div>
+            </div>
+            <p class="card-text"><%= @post.body %></p>
+            <small class="text-muted">市町村：<%= @post.town.name %>　カテゴリ：<%= @post.category.name %></small>
+        </div>
+      </div>  
+    </div>
+  </div>
+</div>
