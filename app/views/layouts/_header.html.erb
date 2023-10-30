@@ -1,50 +1,85 @@
 <header>
-  <div class="container-fluid">
-    <div class="row my-2 d-flex justify-content-between">
-      <div class="col-2 ml-sm-5">
-        <%= link_to root_path do %>
-          <h1>AkitaInterestMapping</h1>
-        <% end %>
-      </div>
-      <div class="justify-content-end align-items-center">
-        <% if user_signed_in? %>
-          <%= link_to destroy_user_session_path,method: :delete do %>
-            <i class="fas fa-sign-out-alt mx-2" ></i>Logout
-          <% end %>
-          <%= link_to root_path do %>
-            <i class="fas fa-home mx-2" ></i>Home
-          <% end %>
-          <%= link_to user_path(current_user.id) do %>
-            <i class="fas fa-user mx-2" ></i>MyPage
-          <% end %>
-          <%= link_to new_post_path do %>
-            <i class="fas fa-edit mx-2" ></i>NewPost
-          <% end %>
+  <div class="bg-dark collapse" id="navbarHeader" style="">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">ようこそAkita Interest Mappingへ！</h4>
+          <p class="text-muted">　このサイトは秋田で起きている面白そうなもの、楽しそうなもの、気になるものを共有するサイトです！<br>　秋田の情報にあふれて秋田の魅力をより多くの人に共有する目的で運営を予定しています！</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">メニュー</h4>
+          <ul class="list-unstyled">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to destroy_user_session_path,method: :delete do %>
+                <i class="fas fa-sign-out-alt mx-2" ></i>ログアウト
+              <% end %>
+            </li>
+            <li>
+              <%= link_to root_path do %>
+                <i class="fas fa-home mx-2" ></i>ホーム
+              <% end %>
+            </li>
+            <li>
+              <%= link_to user_path(current_user.id) do %>
+                <i class="fas fa-user mx-2" ></i>マイページ
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_post_path do %>
+                <i class="fas fa-edit mx-2" ></i>新規投稿
+              <% end %>
+            </li>
 
         <% elsif admin_signed_in? %>
-          <%= link_to destroy_admin_session_path, method: :delete do %>
-            <i class="fas fa-sign-out-alt mx-2" ></i>Logout
-          <% end %>
-          <%= link_to admins_root_path do %>
-            <i class="fas fa-home mx-2" ></i>Home
-          <% end %>
-          <%= link_to admins_users_path do %>
-            <i class="fas fa-users mx-2" ></i>Users
-          <% end %>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt mx-2" ></i>ログアウト
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admins_root_path do %>
+              <i class="fas fa-home mx-2" ></i>ホーム
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admins_users_path do %>
+              <i class="fas fa-users mx-2" ></i>ユーザー一覧
+            <% end %>
+          </li>
 
         <% else %>
-          <%= link_to user_session_path do %>
-            <i class="fas fa-sign-in-alt mx-2"></i>Login
-          <% end %>
-          <%= link_to root_path do %>
-            <i class="fas fa-home mx-2"></i>Home
-          <% end %>
-          <%= link_to user_session_path do %>
-            <i class="fas fa-user mx-2"></i>Mypage
-          <% end %>
+          <li>
+            <%= link_to user_session_path do %>
+              <i class="fas fa-sign-in-alt mx-2"></i>ログイン
+            <% end %>
+          </li>
+          <li>
+            <%= link_to root_path do %>
+            <i class="fas fa-home mx-2"></i>ホーム
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_session_path do %>
+              <i class="fas fa-user mx-2"></i>マイページ
+            <% end %>
+          </li>
 
         <% end %>
+          </ul>
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+        <strong><%= link_to root_path do %>
+          Akita Interest Mapping
+        <% end %></strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     </div>
   </div>
 </header>

@@ -26,6 +26,9 @@ class Publics::PostsController < ApplicationController
   end
 
   def index
+    @posts = Post.all
+    @towns = Town.all
+    @categories = Category.all
   end
 
   def show
