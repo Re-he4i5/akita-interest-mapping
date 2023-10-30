@@ -40,6 +40,21 @@
           <td><%= f.text_field :title,placeholder: "タイトル",class: "form-control" %></td>
         </tr>
         <tr>
+          <td>
+            <div id="post_raty"></div>
+            <script>
+              $(document).on('turbolinks:load', function() {
+              let raty_elem = document.querySelector('#post_raty');
+              raty_elem.innerHTML = ""
+              let option = {  
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  scoreName: 'post[star]',
+                };
+              raty(raty_elem,option);
+              });
+            </script>
+          </td>
         </tr>
         <tr>
           <td><%= f.text_area :body,placeholder: "思い出",class: "form-control" %></td>

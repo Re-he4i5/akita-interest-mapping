@@ -1,0 +1,77 @@
+<div class="jscroll">
+<div class="row">
+    <div class="card-deck mx-1">
+        <% posts.each do |post| %>
+        <div class="col-md-6 col-lg-4 col-xl-3 mb-5 px-0">
+            <div class="card h-100 shadow">
+                <%= image_tag post.image,class: "img-fluid" %>
+                <div class="card-body px-3 pb-3 pt-0">
+                    <div class="row mb-2">
+                        <div class="col-5">
+                            <div class="row">
+                                <span class="ml-3 mr-2" id="favorite_buttons_<%= post.id %>">
+                                    <%# <%= render partial: "public/favorites/favorites", locals: {post: post}  %>
+                                </span>
+                                <span class="mx-2">
+                                    <%= link_to post_comments_path(post.id),class: "text-dark",style: "text-decoration:none;" do %>
+                                        <i class="far fa-comment-dots"></i><%= post.comments.count %>件
+                                    <% end %>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-7 text-right">
+                            <%= link_to user_path(post.user.id) do %>
+                                ＠<%= post.user.nickname %>
+                            <% end %>
+                        </div>
+                    </div>
+
+                    <p class="card-text"><%= post.body %></p>
+                    <small class="text-muted">市町村：<%= post.town.name %>　カテゴリ：<%= post.category.name %></small>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+<div class="row mb-5 d-flex justify-content-center">
+    <%= paginate posts %>
+</div>
+</div>
+
+<script>
+  $(document).on('turbolinks:load', function() {
+    $('.jscroll').jscroll({ // 追加したdivのclass名と合わせる
+      contentSelector: '.jscroll', 
+      nextSelector: 'span.next > a',  // 次ページリンクのセレクタ
+      loadingHtml: '読み込み中',
+      callback: function() {
+        reloadRaty();
+      }
+    });
+    function reloadRaty(){
+        let elements = document.getElementsByClassName('raty-star');
+        let option = {
+            starOn: "<%= asset_path('star-on.png') %>",
+            starOff: "<%= asset_path('star-off.png') %>",
+            score: function() {
+                return $(this).attr('data-score');
+            },
+            readOnly: true,
+        };
+
+        for (let i = 0;i < elements.length;i++) {
+            console.log(elements[i]);
+            elements[i].innerHTML = "";
+            raty(elements[i] ,option);
+        }
+    }
+    reloadRaty();
+  });
+</script>
+
+<style>
+  .pagination {
+    visibility: hidden;
+  }
+</style>

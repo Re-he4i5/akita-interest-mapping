@@ -1,6 +1,70 @@
 <div class="container-fluid">
   <div class="row mb-5">
+    <div class="col-md-5 col-xl-4 mt-4 d-flex align-items-center">
+      <div class="col align-middle text-center">
+        <h1 class="log display-3 mb-3"><span class="tabi">Akita <br> Interest <br> Mapping</span></h1>
+      </div>
+    </div>
+    <div class="col-md-7 pr-md-5 pr-xl-0">
+      <input id="address" type="textbox" placeholder="地図上で場所を探す">
+      <input type="button" value="検索" onclick="codeAddress()">
+      
+      <div id='map'></div>
+      
+      <style>
+      #map {
+        height: 600px;
+        width: auto;
+      }
+      </style>
+      
+      <script>
+      let map
+      
+      function initMap(){
+        geocoder = new google.maps.Geocoder()
+      
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 39.7191, lng: 140.1035},
+    zoom: 8.3,
+        });
+        <% if @towns.present? %>
+        <% @towns.each do |town| %>
+          var contentString = "<%= town.name %>";
+          
+          var marker = new google.maps.Marker({
+            position: {lat: <%= town.latitude %>, lng: <%= town.longitude %>},
+            map: map,
+            animation: google.maps.Animation.DROP
+          });
+        <% end %>
+        <% end %>
 
-    this is top page
+
+      }
+      
+      
+      function codeAddress(){
+        let inputAddress = document.getElementById('address').value;
+      
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+          if (status == 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            alert('該当する結果がありませんでした：' + status);
+          }
+        });   
+      }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_API_KEY'] %>&callback=initMap" async defer></script>  
+    </div>
+  </div>
+  <div class="row my-5 pt-5 d-flex justify-content-center">
+    <div class="h3">ー　タイムライン　ー</div>
+    <%= render 'publics/posts/posts',posts: @posts %>
   </div>
 </div>

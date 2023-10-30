@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   belongs_to :user,optional: true
   belongs_to :town,optional: true
   belongs_to :category,optional: true    
+  has_many :favorites,dependent: :destroy
+  has_many :comments,dependent: :destroy
 
   has_one_attached :image
 
@@ -10,4 +12,5 @@ class Post < ApplicationRecord
   validates :town,presence: true
   validates :category,presence: true
   validates :title,presence: true
+  validates :star,presence: true
 end

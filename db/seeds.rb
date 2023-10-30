@@ -45,14 +45,14 @@ end
 
 Post.create!(
     [
-        {user_id: "1", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/7A0A481B-2AE9-4586-98A2-373A8321298F.JPG"), filename:"7A0A481B-2AE9-4586-98A2-373A8321298F.JPG"),town_id: "12",category_id: "3",title: "元滝伏流水",body: "個人的ベスト避暑地です！"},
-        {user_id: "2", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00154.JPEG"), filename:"DSC00154.JPEG"),town_id: "7",category_id: "7",title: "雲昌寺でみつけた！",body: "鼻水が出てるみたいでかわいかったです！"},
-        {user_id: "3", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00163.JPG"), filename:"DSC00163.JPG"),town_id: "7",category_id: "9",title: "雲昌寺",body: "紫陽花きれいでした！"},
-        {user_id: "4", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00637.jpg"), filename:"DSC00637.jpg"),town_id: "19",category_id: "3",title: "ねこばりいわ",body: "自然の中で癒されました！"},
-        {user_id: "5", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00697.JPG"), filename:"DSC00697.JPG"),town_id: "10",category_id: "6",title: "大曲の花火",body: "iPhoneで撮りました！"},
-        {user_id: "6", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00765.JPG"), filename:"DSC00765.JPG"),town_id: "10",category_id: "7",title: "大曲の花火",body: "彼氏と行きました！"},
-        {user_id: "7", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00787.JPG"), filename:"DSC00787.JPG"),town_id: "10",category_id: "6",title: "大曲の花火のフィナーレ！",body: "今年は雨が振らなくてよかったです！"},
-        {user_id: "7",image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC02653.JPEG"), filename:"DSC02653.JPEG"),town_id: "7",category_id: "3",title: "雲昌寺のあじさい",body: "オールドレンズで撮りました！"},
-        {user_id: "7",image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC02663.JPEG"), filename:"DSC02663.JPEG"),town_id: "7",category_id: "9",title: "雲昌寺のあじさい",body: "今年も行きました！"},
+        {user_id: "1", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/7A0A481B-2AE9-4586-98A2-373A8321298F.JPG"), filename:"7A0A481B-2AE9-4586-98A2-373A8321298F.JPG"),town_id: "12",category_id: "3",title: "元滝伏流水",body: "個人的ベスト避暑地です！",star: "4"},
+        {user_id: "2", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00154.JPEG"), filename:"DSC00154.JPEG"),town_id: "7",category_id: "7",title: "雲昌寺でみつけた！",body: "鼻水が出てるみたいでかわいかったです！",star: "4"},
+        {user_id: "3", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00163.JPG"), filename:"DSC00163.JPG"),town_id: "7",category_id: "9",title: "雲昌寺",body: "紫陽花きれいでした！",star: "4"},
+        {user_id: "4", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00637.jpg"), filename:"DSC00637.jpg"),town_id: "19",category_id: "3",title: "ねこばりいわ",body: "自然の中で癒されました！",star: "4"},
+        {user_id: "5", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00697.JPG"), filename:"DSC00697.JPG"),town_id: "10",category_id: "6",title: "大曲の花火",body: "iPhoneで撮りました！",star: "4"},
+        {user_id: "6", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00765.JPG"), filename:"DSC00765.JPG"),town_id: "10",category_id: "7",title: "大曲の花火",body: "彼氏と行きました！",star: "4"},
+        {user_id: "7", image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC00787.JPG"), filename:"DSC00787.JPG"),town_id: "10",category_id: "6",title: "大曲の花火のフィナーレ！",body: "今年は雨が振らなくてよかったです！",star: "4"},
+        {user_id: "7",image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC02653.JPEG"), filename:"DSC02653.JPEG"),town_id: "7",category_id: "3",title: "雲昌寺のあじさい",body: "オールドレンズで撮りました！",star: "4"},
+        {user_id: "7",image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/initial_data/DSC02663.JPEG"), filename:"DSC02663.JPEG"),town_id: "7",category_id: "9",title: "雲昌寺のあじさい",body: "今年も行きました！",star: "4"},
     ]
 )

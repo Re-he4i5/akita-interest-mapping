@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :category_id,null: false
       t.string :title,null: false
       t.string :body,null: false
+      t.integer :star,null: false, default: 1 
       t.timestamps
     end
   end
