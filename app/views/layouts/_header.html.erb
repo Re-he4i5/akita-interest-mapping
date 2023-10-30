@@ -1,0 +1,24 @@
+<header>
+  <div class="container-fluid">
+    <div class="row my-2 d-flex justify-content-between">
+      <div class="col-2 ml-sm-5">
+        <%= link_to root_path do %>
+          <h1>AkitaInterestMapping</h1>
+        <% end %>
+      </div>
+      <div class="justify-content-end align-items-center">
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path,method: :delete do %>
+            Logout
+          <% end %>
+        <% elsif admin_signed_in? %>
+            Home
+        <% else %>
+          <%= link_to user_session_path do %>
+            Login
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
