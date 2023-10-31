@@ -1,8 +1,7 @@
-<div class="jscroll">
 <div class="row">
     <div class="card-deck mx-1">
         <% posts.each do |post| %>
-        <div class="col-md-6 col-lg-4 col-xl-3 mb-5 px-0">
+        <div class="col-md-3 col-lg-3 col-xl-3 mb-5 px-0">
             <div class="card h-100 shadow">
                 <%= image_tag post.image,class: "img-fluid" %>
                 <div class="card-body px-3 pb-3 pt-0">
@@ -10,7 +9,7 @@
                         <div class="col-5">
                             <div class="row">
                                 <span class="ml-3 mr-2" id="favorite_buttons_<%= post.id %>">
-                                    <%# <%= render partial: "public/favorites/favorites", locals: {post: post}  %>
+                                    <%= render partial: "publics/favorites/favorites", locals: {post: post} %>    
                                 </span>
                                 <span class="mx-2">
                                     <%= link_to post_comments_path(post.id),class: "text-dark",style: "text-decoration:none;" do %>
@@ -25,31 +24,40 @@
                             <% end %>
                         </div>
                     </div>
-
+                    <div class="row mb-2">
+                        <div class="col-6 pr-0">
+                            <span class="card-title h4 font-weight-bold"><%= post.title %></span>    
+                        </div>
+                        <div class="col-6 text-right pl-0">
+                            <!--星型レビューを表示-->
+                            <span id="rate_<%= post.id %>" data-score="<%=post.star%>" class="raty-star"></span>
+                            <!---------------------->
+                        </div>
+                    </div>
                     <p class="card-text"><%= post.body %></p>
                     <small class="text-muted">市町村：<%= post.town.name %>　カテゴリ：<%= post.category.name %></small>
                 </div>
+                <% if post.user == current_user %>
+                <div class="row">
+                    <div class="col">
+                        <%= link_to "編集",edit_post_path(post.id),class: "btn btn-success","data-turbolinks": "false" %>    
+                        <%= link_to "削除",post_path(post.id),method: :delete,class: "btn btn-danger","data-confirm" => "本当に削除しますか？" %>    
+                    </div>
+                </div>
+                <% end %>
             </div>
         </div>
         <% end %>
     </div>
 </div>
 <div class="row mb-5 d-flex justify-content-center">
-    <%= paginate posts %>
-</div>
+    <span class="page">
+        <%= paginate posts %>    
+    </span>
 </div>
 
 <script>
-  $(document).on('turbolinks:load', function() {
-    $('.jscroll').jscroll({ // 追加したdivのclass名と合わせる
-      contentSelector: '.jscroll', 
-      nextSelector: 'span.next > a',  // 次ページリンクのセレクタ
-      loadingHtml: '読み込み中',
-      callback: function() {
-        reloadRaty();
-      }
-    });
-    function reloadRaty(){
+    $(document).on('turbolinks:load', function reloadRaty(){
         let elements = document.getElementsByClassName('raty-star');
         let option = {
             starOn: "<%= asset_path('star-on.png') %>",
@@ -65,13 +73,5 @@
             elements[i].innerHTML = "";
             raty(elements[i] ,option);
         }
-    }
-    reloadRaty();
-  });
+});
 </script>
-
-<style>
-  .pagination {
-    visibility: hidden;
-  }
-</style>

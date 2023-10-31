@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2023_10_30_174007) do
     t.string "first_name_kana"
     t.string "nickname"
     t.string "introduction", default: "", null: false
-    t.boolean "status", default: true, null: false
+    t.boolean "status", default: false, null: false
     t.integer "privacy", limit: 1, default: 1, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

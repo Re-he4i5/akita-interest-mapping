@@ -6,8 +6,8 @@
       </div>
     </div>
     <div class="col-md-7 pr-md-5 pr-xl-0">
-      <input id="address" type="textbox" placeholder="地図上で場所を探す">
-      <input type="button" value="検索" onclick="codeAddress()">
+      <%# <input id="address" type="textbox" placeholder="地図上で場所を探す">
+      <input type="button" value="検索" onclick="codeAddress()"> %>
       
       <div id='map'></div>
       
@@ -64,7 +64,7 @@
     </div>
   </div>
   <div class="row my-5 pt-5 d-flex justify-content-center">
-    <div class="h3">ー　タイムライン　ー</div>
+    <div class="h3">ー　自分の投稿　ー</div>
     <%= render 'publics/posts/posts',posts: @posts %>
   </div>
 </div>

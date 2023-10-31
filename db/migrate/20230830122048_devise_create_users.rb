@@ -20,7 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :first_name_kana
       t.string :nickname
       t.string :introduction,null: false, default: ""
-      t.boolean :status, default: true, null: false
+      t.boolean :status, default: false, null: false
       t.integer :privacy, default: 1, null: false, limit: 1
 
       t.timestamps null: false
