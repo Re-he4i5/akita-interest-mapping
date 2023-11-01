@@ -1,0 +1,53 @@
+<section class=" text-center">
+    <div class="container">
+      <h4 class="jumbotron-heading">
+        <div class="row d-flex justify-content-center">
+          <%= image_tag @user.get_profile_image(150,150),class: "rounded-circle" %><br>
+        </div>
+        ー　<%= @user.nickname %>　さんのページ　ー
+      </h4>
+      <p class="lead text-muted"><%= @user.introduction %></p>
+      <p>
+        <a href="#" class="btn btn-primary my-2">プロフィール編集</a>
+        <a href="#" class="btn btn-success my-2">お気に入り</a>
+        <a href="#" class="btn btn-secondary my-2">非公開にする</a>
+        <a href="#" class="btn btn-danger my-2">退会する</a>
+
+      </p>
+    </div>
+  </section>
+
+  <div class="album py-5">
+    <div class="container">
+
+      <div class="row">
+        <% @user.posts.each do |post| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= image_tag post.image,class: "img-fluid" %>
+            <div class="card-header">
+                <span class="card-title h4 font-weight-bold"><%= post.title %></span>  
+                <p>
+                <small class="text-muted">市町村：<%= post.town.name %></p>
+                <p>カテゴリ：<%= post.category.name %></small></p>  
+            </div>
+            <div class="card-body">
+              <p class="card-text"><%= post.body %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <% if current_page?(user_path) %>
+                <div class="btn-group">
+                    <%= link_to "編集",edit_post_path(post.id),class: "btn btn-success","data-turbolinks": "false" %>    
+                    <%= link_to "削除",post_path(post.id),method: :delete,class: "btn btn-danger","data-confirm" => "本当に削除しますか？" %>  
+                  </div>
+                <% end %>
+                <small class="text-muted"><%= link_to user_path(post.user.id) do %>
+                  ＠<%= post.user.nickname %>
+                <% end %></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

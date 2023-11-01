@@ -11,8 +11,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-color:#CDE6C7;">
     <%= render 'layouts/header' %>
-    <%= yield %>
+      <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
