@@ -8,9 +8,17 @@ class Publics::UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def update
   end
-  
+
+  def withdraw
+    @user = current_user
+    @user.update(status: false)
+    reset_session
+    redirect_to root_path
+  end
+
 end

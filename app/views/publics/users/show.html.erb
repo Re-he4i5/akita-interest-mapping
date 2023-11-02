@@ -8,10 +8,10 @@
       </h4>
       <p class="lead text-muted"><%= @user.introduction %></p>
       <p>
-        <a href="#" class="btn btn-primary my-2">プロフィール編集</a>
+        <%= link_to "プロフィール編集",edit_user_path(current_user.id),class: "btn btn-primary my-2" %>
         <a href="#" class="btn btn-success my-2">お気に入り</a>
         <a href="#" class="btn btn-secondary my-2">非公開にする</a>
-        <a href="#" class="btn btn-danger my-2">退会する</a>
+        <%= link_to "退会する",user_withdraw_path(current_user.id),class: "btn btn-danger my-2","data-confirm" => "本当に退会しますか？" %>
 
       </p>
     </div>
