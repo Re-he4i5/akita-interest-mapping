@@ -11,6 +11,7 @@ class Publics::PostsController < ApplicationController
     if Town.find_by(name: @post.town_name)
       town = Town.find_by(name: @post.town_name)
       @post.town_id = town.id
+      
     else
       @post.town_id = nil
     end
@@ -60,6 +61,9 @@ class Publics::PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy!
+    redirect_to user_path(current_user.id)
   end
 
   private

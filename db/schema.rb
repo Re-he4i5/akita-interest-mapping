@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2023_10_30_145057) do
     t.string "first_name_kana"
     t.string "nickname"
     t.string "introduction", default: "", null: false
-    t.boolean "status", default: true, null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
